@@ -238,9 +238,11 @@
   /* Mural */
   .mural{
     margin-top: 40px;
-    padding-top: 30px;
+    padding: 30px 30px 60px;
     border-top: 1.5px dashed rgba(192,88,45,0.5);
     text-align: left;
+    position: relative;
+    z-index: 3;
   }
   .mural-title{
     font-family: 'Playfair Display', serif;
@@ -468,7 +470,9 @@
 
       <div class="mural">
         <p class="mural-title">Palpites</p>
-        <p class="mural-sub">Adoramos curiosidade! Guarde seu palpite com carinho — em breve vamos revelar se você acertou.</p>
+        <p class="mural-sub">o que todo mundo acha que vamos anunciar</p>
+        <div class="mural-status" id="muralStatus">Carregando palpites...</div>
+        <div class="mural-grid" id="muralGrid"></div>
       </div>
 
     </div>
@@ -481,7 +485,7 @@
   // CONFIGURAÇÃO — cole aqui a URL do seu Web App do Google Apps Script
   // (veja o arquivo Code.gs e as instruções de implantação)
   // ============================================================
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwoBdzw0x19i4LDjBSRDBzibDpuqR_rWtmfFfJweXMDVuqtRjIiKs5e-2R6bDh9AhBF9w/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwEIMv1aFZ7P6YhKSqHwSobdwTtklttcQCxn-9qUY5_TW87CtaUyDFstDpqXmmxyBSISg/exec';
 
   const minusBtn = document.getElementById('minus');
   const plusBtn = document.getElementById('plus');
@@ -516,6 +520,8 @@
   const successMsg = document.getElementById('successMsg');
   const recap = document.getElementById('recap');
   const submitBtn = document.getElementById('submitBtn');
+  const muralStatus = document.getElementById('muralStatus');
+  const muralGrid = document.getElementById('muralGrid');
   const nameInput = document.getElementById('name');
   const formError = document.getElementById('formError');
 
@@ -523,6 +529,13 @@
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  async function getMural(){
+    const res = await fetch(`${APPS_SCRIPT_URL}?action=list`);
+    if(!res.ok) throw new Error('Falha ao carregar o mural');
+    const data = await res.json();
+    return Array.isArray(data.entries) ? data.entries : [];
   }
 
   // 'text/plain' evita que o navegador dispare um preflight CORS,
@@ -535,6 +548,35 @@
     });
     if(!res.ok) throw new Error('Falha ao enviar dados para a planilha');
     return res.json();
+  }
+
+  async function renderMural(){
+    try{
+      const entries = await getMural();
+
+      if(entries.length === 0){
+        muralStatus.textContent = 'Ainda não há palpites — seja a inspiração para o próximo!';
+        muralGrid.innerHTML = '';
+        return;
+      }
+
+      muralStatus.textContent = '';
+      muralGrid.innerHTML = '';
+
+      entries.forEach(entry => {
+        const card = document.createElement('div');
+        card.className = 'guess-card';
+        card.innerHTML = `
+          <p class="who">${escapeHtml(entry.name || 'Convidado(a)')}</p>
+          <p class="text">${escapeHtml(entry.guess || '')}</p>
+        `;
+        muralGrid.appendChild(card);
+      });
+
+    }catch(err){
+      console.error('Erro ao carregar mural', err);
+      muralStatus.textContent = 'Não foi possível carregar os palpites agora. Tente atualizar a página.';
+    }
   }
 
   form.addEventListener('submit', async (e) => {
@@ -576,7 +618,10 @@
     successMsg.classList.add('show');
     submitBtn.disabled = false;
     submitBtn.textContent = 'Confirmar presença';
+    await renderMural();
   });
+
+  renderMural();
 </script>
 
 </body>

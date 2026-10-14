@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Confirme sua presença — Anúncio Oficial</title>
+<title>Anúncio Oficial — Confirme sua presença</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #f3e9d6;
-    --paper: #f8f0de;
+    --cream: #f4ebd0;
+    --paper: #f7f0df;
     --maroon: #7a2416;
     --maroon-deep: #5c1b10;
     --clay: #c1592b;
     --gold: #c08a34;
-    --gold-soft: #d9ac5c;
     --ink: #4a3320;
   }
 
@@ -41,37 +40,37 @@
     width: 100%;
     max-width: 640px;
     background: var(--paper);
-    border: 1px solid rgba(122,36,22,0.15);
-    box-shadow: 0 30px 60px -25px rgba(74,51,32,0.45), 0 2px 0 rgba(255,255,255,0.4) inset;
-    padding: 14px;
+    border: 1px solid rgba(122,36,22,0.2);
+    box-shadow: 0 30px 60px -25px rgba(74,51,32,0.45);
+    padding: 20px;
   }
 
   .card-inner{
     position: relative;
     border: 1.5px dashed rgba(192,88,45,0.4);
-    padding: 60px 40px 50px;
+    padding: 70px 45px 60px;
     overflow: hidden;
   }
 
-  /* Cantos decorados com o estilo do convite */
+  /* Cantos com folhas de outono maiores inspiradas no convite */
   .corner{
     position: absolute;
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
     pointer-events: none;
     z-index: 3;
   }
-  .corner.tl{ top: -10px; left: -10px; }
-  .corner.tr{ top: -10px; right: -10px; transform: scaleX(-1); }
-  .corner.bl{ bottom: -10px; left: -10px; transform: scaleY(-1); }
-  .corner.br{ bottom: -10px; right: -10px; transform: scale(-1,-1); }
+  .corner.tl{ top: -20px; left: -20px; }
+  .corner.tr{ top: -20px; right: -20px; transform: scaleX(-1); }
+  .corner.bl{ bottom: -20px; left: -20px; transform: scaleY(-1); }
+  .corner.br{ bottom: -20px; right: -20px; transform: scale(-1,-1); }
 
   .content{ position: relative; z-index: 2; text-align: center; }
 
   .eyebrow{
     font-family: 'EB Garamond', serif;
+    font-size: 17px;
     font-style: italic;
-    font-size: 16.5px;
     color: var(--ink);
     margin: 0 0 16px;
     opacity: 0.9;
@@ -79,37 +78,37 @@
 
   h1{
     font-family: 'Playfair Display', serif;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--maroon-deep);
-    font-size: clamp(40px, 8vw, 56px);
+    font-size: clamp(42px, 8vw, 60px);
     margin: 0 0 20px;
     line-height: 1.1;
   }
 
   .divider{
-    display: flex; align-items: center; justify-content: center;
-    gap: 10px; margin: 10px auto 26px; color: var(--gold);
-  }
-  .divider .line{
-    height: 1px; width: 60px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    width: 60px;
+    height: 1px;
+    background: var(--maroon);
+    margin: 15px auto 25px;
+    opacity: 0.4;
   }
 
   .details{
-    font-size: 17px; line-height: 1.6;
+    font-size: 16.5px; line-height: 1.6;
     color: var(--ink); font-weight: 500; margin-bottom: 8px;
   }
-  .details .when{ 
+  
+  .when{ 
     color: var(--maroon); 
     font-weight: 600;
-    margin-top: 12px; 
+    margin-top: 14px; 
     display: block; 
     font-size: 18px;
   }
 
   .basket-icon {
-    width: 36px;
-    margin: 16px auto;
+    width: 40px;
+    margin: 18px auto;
     display: block;
     opacity: 0.85;
   }
@@ -181,7 +180,7 @@
   button.submit:hover{ transform: translateY(-2px); box-shadow: 0 14px 24px -8px rgba(122,36,22,0.6); }
   button.submit:disabled{ opacity: 0.6; cursor: wait; }
 
-  .duck-accent{ width: 45px; margin: 16px auto 0; display: block; opacity: 0.8; color: var(--maroon-deep); }
+  .duck-accent{ width: 50px; margin: 18px auto 0; display: block; opacity: 0.85; color: var(--maroon-deep); }
 
   .success{ display: none; text-align: center; margin-top: 28px; }
   .success.show{ display: block; }
@@ -262,223 +261,50 @@
 <div class="card">
   <div class="card-inner">
 
-    <!-- Folhas decorativas nos cantos inspiradas no convite -->
-    <svg class="corner tl" viewBox="0 0 100 100"><path d="M0,0 L60,0 C50,20 40,40 0,60 Z" fill="#b5451f"/><path d="M0,0 L40,0 C30,30 20,40 0,50 Z" fill="#d9ac5c"/><path d="M5,5 L70,2 C55,25 35,45 2,70 Z" fill="#a83f21" opacity="0.9"/></svg>
-    <svg class="corner tr" viewBox="0 0 100 100"><path d="M0,0 L60,0 C50,20 40,40 0,60 Z" fill="#b5451f"/><path d="M0,0 L40,0 C30,30 20,40 0,50 Z" fill="#d9ac5c"/><path d="M5,5 L70,2 C55,25 35,45 2,70 Z" fill="#a83f21" opacity="0.9"/></svg>
-    <svg class="corner bl" viewBox="0 0 100 100"><path d="M0,0 L60,0 C50,20 40,40 0,60 Z" fill="#b5451f"/><path d="M0,0 L40,0 C30,30 20,40 0,50 Z" fill="#d9ac5c"/><path d="M5,5 L70,2 C55,25 35,45 2,70 Z" fill="#a83f21" opacity="0.9"/></svg>
-    <svg class="corner br" viewBox="0 0 100 100"><path d="M0,0 L60,0 C50,20 40,40 0,60 Z" fill="#b5451f"/><path d="M0,0 L40,0 C30,30 20,40 0,50 Z" fill="#d9ac5c"/><path d="M5,5 L70,2 C55,25 35,45 2,70 Z" fill="#a83f21" opacity="0.9"/></svg>
+    <!-- Folhas de bordo grandes e marcantes nos cantos (exatamente como no seu modelo) -->
+    <svg class="corner tl" viewBox="0 0 100 100" fill="none">
+      <path d="M0 0 L55 2 C45 22 35 38 2 55 Z" fill="#b5451f"/>
+      <path d="M0 0 L35 0 C25 25 15 35 0 45 Z" fill="#d9ac5c"/>
+      <path d="M2 2 L75 5 C60 28 40 45 5 80 Z" fill="#a83f21" opacity="0.92"/>
+      <path d="M20 5 L35 25 L55 15 L45 35 L70 35 L50 50 L65 70 L40 60 L30 85 L25 60 L5 65 L20 45 L5 30 L25 30 Z" fill="#c1592b" transform="scale(0.8)"/>
+    </svg>
+    <svg class="corner tr" viewBox="0 0 100 100" fill="none">
+      <path d="M0 0 L55 2 C45 22 35 38 2 55 Z" fill="#b5451f"/>
+      <path d="M0 0 L35 0 C25 25 15 35 0 45 Z" fill="#d9ac5c"/>
+      <path d="M2 2 L75 5 C60 28 40 45 5 80 Z" fill="#a83f21" opacity="0.92"/>
+      <path d="M20 5 L35 25 L55 15 L45 35 L70 35 L50 50 L65 70 L40 60 L30 85 L25 60 L5 65 L20 45 L5 30 L25 30 Z" fill="#c1592b" transform="scale(0.8)"/>
+    </svg>
+    <svg class="corner bl" viewBox="0 0 100 100" fill="none">
+      <path d="M0 0 L55 2 C45 22 35 38 2 55 Z" fill="#b5451f"/>
+      <path d="M0 0 L35 0 C25 25 15 35 0 45 Z" fill="#d9ac5c"/>
+      <path d="M2 2 L75 5 C60 28 40 45 5 80 Z" fill="#a83f21" opacity="0.92"/>
+      <path d="M20 5 L35 25 L55 15 L45 35 L70 35 L50 50 L65 70 L40 60 L30 85 L25 60 L5 65 L20 45 L5 30 L25 30 Z" fill="#c1592b" transform="scale(0.8)"/>
+    </svg>
+    <svg class="corner br" viewBox="0 0 100 100" fill="none">
+      <path d="M0 0 L55 2 C45 22 35 38 2 55 Z" fill="#b5451f"/>
+      <path d="M0 0 L35 0 C25 25 15 35 0 45 Z" fill="#d9ac5c"/>
+      <path d="M2 2 L75 5 C60 28 40 45 5 80 Z" fill="#a83f21" opacity="0.92"/>
+      <path d="M20 5 L35 25 L55 15 L45 35 L70 35 L50 50 L65 70 L40 60 L30 85 L25 60 L5 65 L20 45 L5 30 L25 30 Z" fill="#c1592b" transform="scale(0.8)"/>
+    </svg>
 
     <div class="content">
-      <p class="eyebrow">Convidamos você e sua família para um evento que mudará nossas vidas...</p>
+      <p class="eyebrow">Convidamos você e sua família para um evento que mudará nossas vidas..</p>
       <h1>Anúncio oficial</h1>
 
-      <div class="divider">
-        <span class="line"></span>
-        <span class="line"></span>
-      </div>
+      <div class="divider"></div>
 
       <p class="details">
         Beer House — Ceilândia Norte St. M<br>
-        QNM 01 Conjunto A Lote 03, 05, 07<br>
+        QNM 01 CONJUNTO A LOTE 03,05,07 –<br>
         Ceilândia, Brasília – DF, 72215-011
       </p>
 
-      <!-- Pequeno cesto/elemento decorativo central como na imagem -->
+      <!-- Cestinha decorativa central igual à imagem -->
       <svg class="basket-icon" viewBox="0 0 24 24" fill="var(--maroon)"><path d="M19 10h-1.15l-1.68-5.04c-.2-.59-.75-1-1.37-1H7.2c-.62 0-1.17.41-1.37 1L4.15 10H3c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4h1c1.1 0 2-.9 2-2v-1c0-1.1-.9-2-2-2zM7.88 6h8.24l1.17 3.5H6.71l1.17-3.5zM17 19H7v-5h10v5z"/></svg>
 
       <p class="details">
         <span class="when">Sexta-feira, 31 de outubro · 19h</span>
+        <span>123 Cabin Road, Vancouver</span>
       </p>
 
-      <p class="intro">Reserve o lugar de vocês com a gente e, se quiser se arriscar, deixe também o seu palpite sobre o que vamos anunciar.</p>
-
-      <form id="rsvpForm" novalidate>
-        <div class="field">
-          <label for="name">Seu nome</label>
-          <input type="text" id="name" name="name" placeholder="Como você gostaria de ser chamado(a)" required>
-        </div>
-
-        <div class="field">
-          <label>Acompanhantes <span class="hint">quantas pessoas vêm com você (além de você)</span></label>
-          <div class="stepper">
-            <button type="button" id="minus" aria-label="Diminuir acompanhantes">–</button>
-            <span id="guestCount">0</span>
-            <button type="button" id="plus" aria-label="Aumentar acompanhantes">+</button>
-          </div>
-          <div class="companions-list" id="companionsList"></div>
-        </div>
-
-        <div class="field">
-          <label for="guess">Seu palpite <span class="hint">o que você acha que vamos contar no dia 31?</span></label>
-          <textarea id="guess" name="guess" placeholder="Escreva aqui seu palpite..."></textarea>
-        </div>
-
-        <p class="form-error" id="formError">Por favor, escreva seu nome antes de confirmar.</p>
-
-        <div class="submit-wrap">
-          <button type="submit" class="submit" id="submitBtn">Confirmar presença</button>
-          
-          <!-- O patinho/ícone na parte inferior igual ao convite -->
-          <svg class="duck-accent" viewBox="0 0 100 60" fill="none">
-            <path d="M20 45 C15 30 25 15 45 15 C60 15 65 22 68 22 C72 18 80 16 85 18 C82 22 80 26 80 30 C88 33 92 40 88 45 C80 52 60 50 45 50 C32 50 25 50 20 45 Z" fill="currentColor"/>
-            <ellipse cx="30" cy="52" rx="35" ry="3" fill="currentColor" opacity="0.25"/>
-          </svg>
-        </div>
-      </form>
-
-      <div class="success" id="successMsg">
-        <svg class="duck-accent" style="width:34px; margin: 0 auto 6px;" viewBox="0 0 100 60" fill="none">
-          <path d="M20 45 C15 30 25 15 45 15 C60 15 65 22 68 22 C72 18 80 16 85 18 C82 22 80 26 80 30 C88 33 92 40 88 45 C80 52 60 50 45 50 C32 50 25 50 20 45 Z" fill="currentColor"/>
-        </svg>
-        <h2>Presença confirmada!</h2>
-        <p>Mal podemos esperar para comemorar com vocês no dia 31 de outubro.</p>
-        <div class="recap" id="recap"></div>
-      </div>
-
-      <div class="mural">
-        <p class="mural-title">Palpites</p>
-        <p class="mural-sub">o que todo mundo acha que vamos anunciar</p>
-        <div class="mural-status" id="muralStatus">Carregando palpites...</div>
-        <div class="mural-grid" id="muralGrid"></div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<script>
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwEIMv1aFZ7P6YhKSqHwSobdwTtklttcQCxn-9qUY5_TW87CtaUyDFstDpqXmmxyBSISg/exec';
-
-  const minusBtn = document.getElementById('minus');
-  const plusBtn = document.getElementById('plus');
-  const countEl = document.getElementById('guestCount');
-  const listEl = document.getElementById('companionsList');
-  let count = 0;
-
-  function renderCompanions(){
-    listEl.innerHTML = '';
-    listEl.classList.toggle('show', count > 0);
-    for(let i = 1; i <= count; i++){
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.className = 'companion-input';
-      input.placeholder = `Nome do(a) acompanhante ${i}`;
-      listEl.appendChild(input);
-    }
-  }
-
-  minusBtn.addEventListener('click', () => {
-    count = Math.max(0, count - 1);
-    countEl.textContent = count;
-    renderCompanions();
-  });
-  plusBtn.addEventListener('click', () => {
-    count = Math.min(10, count + 1);
-    countEl.textContent = count;
-    renderCompanions();
-  });
-
-  const form = document.getElementById('rsvpForm');
-  const successMsg = document.getElementById('successMsg');
-  const recap = document.getElementById('recap');
-  const submitBtn = document.getElementById('submitBtn');
-  const muralStatus = document.getElementById('muralStatus');
-  const muralGrid = document.getElementById('muralGrid');
-  const nameInput = document.getElementById('name');
-  const formError = document.getElementById('formError');
-
-  function escapeHtml(str){
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  async function getMural(){
-    const res = await fetch(`${APPS_SCRIPT_URL}?action=list`);
-    if(!res.ok) throw new Error('Falha ao carregar o mural');
-    const data = await res.json();
-    return Array.isArray(data.entries) ? data.entries : [];
-  }
-
-  async function postToScript(payload){
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
-    });
-    if(!res.ok) throw new Error('Falha ao enviar dados para a planilha');
-    return res.json();
-  }
-
-  async function renderMural(){
-    try{
-      const entries = await getMural();
-
-      if(entries.length === 0){
-        muralStatus.textContent = 'Ainda não há palpites — seja a inspiração para o próximo!';
-        muralGrid.innerHTML = '';
-        return;
-      }
-
-      muralStatus.textContent = '';
-      muralGrid.innerHTML = '';
-
-      entries.forEach(entry => {
-        const card = document.createElement('div');
-        card.className = 'guess-card';
-        card.innerHTML = `
-          <p class="who">${escapeHtml(entry.name || 'Convidado(a)')}</p>
-          <p class="text">${escapeHtml(entry.guess || '')}</p>
-        `;
-        muralGrid.appendChild(card);
-      });
-
-    }catch(err){
-      console.error('Erro ao carregar mural', err);
-      muralStatus.textContent = 'Não foi possível carregar os palpites agora. Tente atualizar a página.';
-    }
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = nameInput.value.trim();
-    if(!name){
-      formError.classList.add('show');
-      nameInput.focus();
-      return;
-    }
-    formError.classList.remove('show');
-
-    const guess = document.getElementById('guess').value.trim();
-    const companions = Array.from(document.querySelectorAll('.companion-input'))
-      .map(i => i.value.trim())
-      .filter(Boolean);
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
-
-    try{
-      await postToScript({ action: 'rsvp', name, companions, guess });
-    }catch(err){
-      console.error('Não foi possível enviar a confirmação para a planilha', err);
-    }
-
-    recap.innerHTML = `
-      <div><b>Nome:</b> ${escapeHtml(name)}</div>
-      <div><b>Acompanhantes:</b> ${companions.length ? escapeHtml(companions.join(', ')) : 'nenhum'}</div>
-      ${guess ? `<div><b>Palpite:</b> ${escapeHtml(guess)}</div>` : ''}
-    `;
-
-    form.classList.add('hide');
-    successMsg.classList.add('show');
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Confirmar presença';
-    await renderMural();
-  });
-
-  renderMural();
-</script>
-
-</body>
-</html>
+      <p class="intro">Reserve o lugar de vocês com a gente e, se quiser se arriscar, deixe também o seu palpite sobre o que vamos anunciar.</p
